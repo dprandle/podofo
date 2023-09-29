@@ -62,12 +62,12 @@ public:
         // NOTE: Load required legacy providers, such as RC4, together regular ones,
         // as explained in https://wiki.openssl.org/index.php/OpenSSL_3.0#Providers
         m_legacyProvider = OSSL_PROVIDER_load(m_libCtx, "legacy");
-        if (m_legacyProvider == nullptr)
-            PODOFO_RAISE_ERROR_INFO(PdfErrorCode::InvalidHandle, "Unable to load legacy providers in OpenSSL >= 3.x.x");
+        // if (m_legacyProvider == nullptr)
+        //     PODOFO_RAISE_ERROR_INFO(PdfErrorCode::InvalidHandle, "Unable to load legacy providers in OpenSSL >= 3.x.x");
 
         m_defaultProvider = OSSL_PROVIDER_load(m_libCtx, "default");
-        if (m_defaultProvider == nullptr)
-            PODOFO_RAISE_ERROR_INFO(PdfErrorCode::InvalidHandle, "Unable to load default providers in OpenSSL >= 3.x.x");
+        // if (m_defaultProvider == nullptr)
+        //     PODOFO_RAISE_ERROR_INFO(PdfErrorCode::InvalidHandle, "Unable to load default providers in OpenSSL >= 3.x.x");
 
         // https://www.openssl.org/docs/man3.0/man7/crypto.html#FETCHING-EXAMPLES
         Rc4 = EVP_CIPHER_fetch(m_libCtx, "RC4", "provider=legacy");
